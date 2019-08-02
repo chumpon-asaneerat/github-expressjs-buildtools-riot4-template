@@ -104,7 +104,7 @@ const dist_libs = [
     /* moment */
     { "route": "/dist/js", "path": "moment-2.24.0" },
     /* riotjs */
-    { "route": "/dist/js", "path": "riotjs-3.13.2" },
+    { "route": "/dist/js", "path": "riotjs-4.2.0" },
     /* for access precompile riotjs component */
     { "route": "/components", "path": "../../dist/component/riot" },
 ];
