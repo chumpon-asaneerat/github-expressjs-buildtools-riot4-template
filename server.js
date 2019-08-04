@@ -103,6 +103,16 @@ const dist_libs = [
     { "route": "/dist", "path": "flag-icon-css-3.1.0" },
     /* moment */
     { "route": "/dist/js", "path": "moment-2.24.0" },
+    /* chartjs */
+    { "route": "/dist", "path": "chart-js-2.8.0" },
+    /* chartjs-plugin-datalabels */
+    { "route": "/dist", "path": "chart-js-plugin-datalabels-0.6.0" },
+    /* howler */
+    { "route": "/dist/js", "path": "howler-2.1.2" },
+    /* jquery-org-chart */
+    { "route": "/dist", "path": "jquery-org-chart-2.1.3" },
+    /* tabulator */
+    { "route": "/dist", "path": "tabulator-4.3.0" },
     /* riotjs */
     { "route": "/dist/js", "path": "riotjs-4.2.0" },
     /* for access precompile riotjs component */
