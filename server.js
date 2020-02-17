@@ -134,7 +134,7 @@ const dist_libs = [
     /* riotjs */
     { "route": "/dist/js", "path": "riotjs-4.2.0" },
     /* fabricjs */
-    { "route": "/dist", "path": "fabricjs-3.4.0" },
+    { "route": "/dist", "path": "fabricjs-3.6.2" },
     /* gifuct */
     { "route": "/dist", "path": "gifuct-js-1.0.0" },
     /* highcharts */
