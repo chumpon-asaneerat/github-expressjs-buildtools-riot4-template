@@ -12,12 +12,41 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
 
 const winston = require('winston');
-const logger = winston.createLogger({
-    transports: [
-      new winston.transports.Console(),
-      new winston.transports.File({ filename: 'combined.log' })
-    ]
+const { createLogger, format, transports } = require('winston');
+const { combine, timestamp, label, printf, colorize, prettyPrint } = format;
+const colorizer = winston.format.colorize();
+const logFormat = printf(({ level, message, label, timestamp }) => {
+    //return colorizer.colorize(level, `${timestamp} ${level}: ${message}`);
+    return `${timestamp} ${level}: ${message}`;
 });
+
+const DailyRotateFile = require('winston-daily-rotate-file');
+const log_file_opts =  {
+    filename: 'application-%DATE%.log',
+    datePattern: 'YYYY-MM-DD',
+    zippedArchive: true,
+    maxSize: '20m',
+    maxFiles: '14d'
+}
+
+const logger = createLogger({
+    // general format.
+    format: combine(
+        timestamp(),
+        logFormat),
+    transports: [
+        new transports.Console({
+            // custom format for console.
+            format: combine(
+                colorize({all: true}),
+                timestamp(),
+                prettyPrint(),
+                logFormat)
+        }),
+        //new transports.File({ filename: 'combined.log' }),
+        new DailyRotateFile(log_file_opts)
+    ]        
+})
 
 const APPNAME = "Express Project";
 const PORT = 3000;
@@ -184,7 +213,8 @@ app.get("/", (req, res) => {
         message: 'Hello distributed log files!'
     });
 
-    logger.info('Hello again distributed logs');
+    logger.warn('Warning something missing');
+    logger.error('Detected Error!!!');
 
     res.status(200).send(`It's work!!!`);
 });
