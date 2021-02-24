@@ -11,6 +11,14 @@ const favicon = require("serve-favicon");
 const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
 
+const winston = require('winston');
+const logger = winston.createLogger({
+    transports: [
+      new winston.transports.Console(),
+      new winston.transports.File({ filename: 'combined.log' })
+    ]
+});
+
 const APPNAME = "Express Project";
 const PORT = 3000;
 
@@ -171,6 +179,13 @@ dist_libs.forEach(element => {
 });
 
 app.get("/", (req, res) => {
+    logger.log({
+        level: 'info',
+        message: 'Hello distributed log files!'
+    });
+
+    logger.info('Hello again distributed logs');
+
     res.status(200).send(`It's work!!!`);
 });
 
