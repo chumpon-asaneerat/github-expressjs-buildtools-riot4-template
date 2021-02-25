@@ -26,8 +26,9 @@ const DailyRotateFile = require('winston-daily-rotate-file');
 const log_file_opts =  {
     auditFile: 'logger-audit.json',
     filename: 'application-%DATE%.log',
-    datePattern: 'YYYY-MM-DD',
-    zippedArchive: true,
+    //datePattern: 'YYYY-MM-DD-HH-mm',
+    datePattern: 'YYYY-MM-DD-HH',
+    zippedArchive: false,
     maxSize: '20m',
     maxFiles: '14d'
 }
