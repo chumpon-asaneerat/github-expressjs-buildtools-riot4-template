@@ -22,6 +22,7 @@ const logFormat = printf(({ level, message, label, timestamp }) => {
 
 const DailyRotateFile = require('winston-daily-rotate-file');
 const log_file_opts =  {
+    auditFile: 'logger-audit.json',
     filename: 'application-%DATE%.log',
     datePattern: 'YYYY-MM-DD',
     zippedArchive: true,
