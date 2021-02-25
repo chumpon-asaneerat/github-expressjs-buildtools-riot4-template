@@ -11,6 +11,8 @@ const favicon = require("serve-favicon");
 const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
 
+//#region Logger
+
 const winston = require('winston');
 const { createLogger, format, transports } = require('winston');
 const { combine, timestamp, label, printf, colorize, prettyPrint } = format;
@@ -48,6 +50,8 @@ const logger = createLogger({
         new DailyRotateFile(log_file_opts)
     ]        
 })
+
+//#endregion
 
 const APPNAME = "Express Project";
 const PORT = 3000;
